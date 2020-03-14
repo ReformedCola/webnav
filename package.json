@@ -1,5 +1,14 @@
 {
+  "scripts": {
+    "build": "rm -rf dist && parcel build src/index.html --no-minify --public-url ./"
+  },
   "devDependencies": {
     "cssnano": "^4.1.10"
-  }
+  },
+  "name": "webnav",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ReformedCola/webnav.git",
+  "author": "ReformedCola <reformedcola@gmail.com>",
+  "license": "MIT"
 }
