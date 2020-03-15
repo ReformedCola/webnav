@@ -168,7 +168,6 @@ body{background: #ffffff;}
 
 @media (max-width: 500px) {
   .siteList .site{
-    background: #fafafa;
   }
 }
 
@@ -219,13 +218,6 @@ body{background: #ffffff;}
 
 .siteList .addButton:hover{
   background: #fafafa;
-}
-
-@media (max-width: 500px) {
-  .siteList .addButton {
-    border-radius: 4px;
-    background: #fafafa;
-  }
 }
 
 .siteList .addButton .icon{

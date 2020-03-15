@@ -168,7 +168,6 @@ body{background: #ffffff;}
 
 @media (max-width: 500px) {
   .siteList .site{
-    background: #fafafa;
   }
 }
 
@@ -221,13 +220,6 @@ body{background: #ffffff;}
   background: #fafafa;
 }
 
-@media (max-width: 500px) {
-  .siteList .addButton {
-    border-radius: 4px;
-    background: #fafafa;
-  }
-}
-
 .siteList .addButton .icon{
   width: 56px;
   height: 56px;
@@ -248,4 +240,4 @@ body{background: #ffffff;}
   align-items: center;
 }
 
-/*# sourceMappingURL=style.827eddcf.css.map */
+/*# sourceMappingURL=style.9432b68b.css.map */
