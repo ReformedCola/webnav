@@ -6,12 +6,22 @@ const hashMap = xObject || [
   { logo: 'A', url: 'https://www.acfun.cn'},
   { logo: 'B', url: 'https://www.bilibili.com'},
 ]
+const colors = ['rgb(61, 192, 176)', 'rgb(175, 61, 78)', 'rgb(162, 104, 54)', 'rgb(91, 161, 80)', 'rgb(230, 79, 82)', 'rgb(0, 188, 212)', 'rgb(96, 125, 139)', 'rgb(132, 92, 78)', 'rgb(225, 116, 33)', 'rgb(0, 188, 212)']
 
 const simplifyUrl = (url) => {
   return url.replace('https://', '')
     .replace('http://', '')
     .replace('www.', '')
     .replace(/\/.*/, '') // remove everything after '/'
+}
+
+const magicColor = () => {
+  color = colors[Math.floor(Math.random() * colors.length)]
+  $('.snowflake').css("background-color", color)
+  $('.siteList').css("color", color)
+  $('.icon2').css("fill", color)
+  $('.magicText').css("color", color)
+  $('.searchButton').css("background", color)
 }
 
 const render = () => {
@@ -25,6 +35,7 @@ const render = () => {
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-close"></use>
           </svg>
+          <div class="editDialog" title="Edit-Form"></div>
          </div>
       </div>
      </li>`).insertBefore($lastLi)
@@ -37,13 +48,20 @@ const render = () => {
       hashMap.splice(index, 1)
       render()
     })
+    magicColor()
   })
 }
 
 render()
 
+$('.magicButton')
+  .on('click', () => {
+    magicColor()
+    render()
+  })
+
 $('.addButton')
-  .on(`click`, ()=> {
+  .on(`click`, () => {
     let url = window.prompt('Which website would you like to add?')
     if (url.indexOf('http') !== 0) {
       url = 'https://' + url
@@ -70,3 +88,6 @@ $(document).on('keypress', (e) => {
     }
   }
 })
+
+
+
