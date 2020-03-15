@@ -129,15 +129,25 @@ var hashMap = xObject || [{
   logo: 'B',
   url: 'https://www.bilibili.com'
 }];
+var colors = ['rgb(61, 192, 176)', 'rgb(175, 61, 78)', 'rgb(162, 104, 54)', 'rgb(91, 161, 80)', 'rgb(230, 79, 82)', 'rgb(0, 188, 212)', 'rgb(96, 125, 139)', 'rgb(132, 92, 78)', 'rgb(225, 116, 33)', 'rgb(0, 188, 212)'];
 
 var simplifyUrl = function simplifyUrl(url) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/.*/, ''); // remove everything after '/'
 };
 
+var magicColor = function magicColor() {
+  color = colors[Math.floor(Math.random() * colors.length)];
+  $('.snowflake').css("background-color", color);
+  $('.siteList').css("color", color);
+  $('.icon2').css("fill", color);
+  $('.magicText').css("color", color);
+  $('.searchButton').css("background", color);
+};
+
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n      <div class=\"site\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n        <div class=\"close\">\n          <svg class=\"icon\" aria-hidden=\"true\">\n            <use xlink:href=\"#icon-close\"></use>\n          </svg>\n         </div>\n      </div>\n     </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n      <div class=\"site\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n        <div class=\"close\">\n          <svg class=\"icon\" aria-hidden=\"true\">\n            <use xlink:href=\"#icon-close\"></use>\n          </svg>\n          <div class=\"editDialog\" title=\"Edit-Form\"></div>\n         </div>\n      </div>\n     </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -148,10 +158,15 @@ var render = function render() {
       hashMap.splice(index, 1);
       render();
     });
+    magicColor();
   });
 };
 
 render();
+$('.magicButton').on('click', function () {
+  magicColor();
+  render();
+});
 $('.addButton').on("click", function () {
   var url = window.prompt('Which website would you like to add?');
 
@@ -183,4 +198,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.8774f3a0.js.map
+//# sourceMappingURL=main.06c14fef.js.map
