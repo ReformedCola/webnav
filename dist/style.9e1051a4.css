@@ -42,7 +42,23 @@ body{background: #ffffff;}
 }
 .searchForm > .magicButton{
   margin-right: 10px;
+  animation: bounce 2s infinite;
 }
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0); }
+  40% {
+    -webkit-transform: translateY(2px) translateX(2px);
+    transform: translateY(2px) translateX(2px); }
+  60% {
+    -webkit-transform: translateY(1px) translateX(1px);
+    transform: translateY(1px) translateX(1px); } }
 
 .searchForm > .magicButton > .magic-wrapper > .icon2{
   flex-direction: column;
@@ -140,7 +156,6 @@ body{background: #ffffff;}
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: white;
   border-radius: 4px;
   padding: 20px 0;
   position: relative;
@@ -165,8 +180,8 @@ body{background: #ffffff;}
   align-items: center;
   font-size: 64px;
   text-transform: uppercase;
-  /*border-radius: 50%;
-  background: rgba(241,243,244,1);*/
+  border-radius: 50%;
+  background: rgba(241,243,244,1);
 }
 
 .siteList .site > .link{
@@ -194,7 +209,6 @@ body{background: #ffffff;}
 }
 
 .siteList .addButton{
-  background: white;
   width: 160px;
   display: flex;
   justify-content: center;
@@ -211,6 +225,8 @@ body{background: #ffffff;}
 .siteList .addButton .icon{
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  background: rgba(241,243,244,1);
 }
 
 .siteList .addButton .text{
@@ -226,4 +242,4 @@ body{background: #ffffff;}
   align-items: center;
 }
 
-/*# sourceMappingURL=style.18abee26.css.map */
+/*# sourceMappingURL=style.9e1051a4.css.map */

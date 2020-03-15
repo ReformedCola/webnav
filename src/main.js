@@ -6,7 +6,23 @@ const hashMap = xObject || [
   { logo: 'A', url: 'https://www.acfun.cn'},
   { logo: 'B', url: 'https://www.bilibili.com'},
 ]
-const colors = ['rgb(61, 192, 176)', 'rgb(175, 61, 78)', 'rgb(162, 104, 54)', 'rgb(91, 161, 80)', 'rgb(230, 79, 82)', 'rgb(0, 188, 212)', 'rgb(96, 125, 139)', 'rgb(132, 92, 78)', 'rgb(225, 116, 33)', 'rgb(0, 188, 212)']
+const colors = [
+  'rgb(61, 192, 176)',
+  'rgb(175, 61, 78)',
+  'rgb(162, 104, 54)',
+  'rgb(91, 161, 80)',
+  'rgb(230, 79, 82)',
+  'rgb(0, 188, 212)',
+  'rgb(96, 125, 139)',
+  'rgb(132, 92, 78)',
+  'rgb(225, 116, 33)',
+  /*------------------*/
+  'rgb(72, 85, 100)',
+  'rgb(78, 169, 219)',
+  'rgb(137, 48, 61)',
+  'rgb(48, 63, 159)',
+  'rgb(69, 90, 100)'
+]
 
 const simplifyUrl = (url) => {
   return url.replace('https://', '')
@@ -15,27 +31,53 @@ const simplifyUrl = (url) => {
     .replace(/\/.*/, '') // remove everything after '/'
 }
 
-const magicColor = () => {
-  color = colors[Math.floor(Math.random() * colors.length)]
-  $('.snowflake').css("background-color", color)
-  $('.siteList').css("color", color)
-  $('.icon2').css("fill", color)
-  $('.magicText').css("color", color)
-  $('.searchButton').css("background", color)
+const logoList = (e) => {
+  return('https://www.' + e + '/favicon.ico')
 }
 
+
+const magicColor = () => {
+  color = colors[Math.floor(Math.random() * colors.length)]
+  if(color === 'rgb(72, 85, 100)'
+    || color === 'rgb(78, 169, 219)'
+    || color === 'rgb(137, 48, 61)'
+    || color === 'rgb(48, 63, 159)'
+    || color === 'rgb(69, 90, 100)'
+  ) {
+    $('body').css("background", color)
+    $('.snowflake').css("background", 'white')
+    $('.siteList').css("color", 'white')
+    $('.icon2').css("fill", 'white')
+    $('.magicText').css("color", 'white')
+    $('.searchButton').css("background", 'white')
+    $('.searchButton').css("color", color)
+
+  } else {
+    $('body').css("background", 'white')
+    $('.snowflake').css("background", color)
+    $('.siteList').css("color", color)
+    $('.icon2').css("fill", color)
+    $('.magicText').css("color", color)
+    $('.searchButton').css("background", color)
+    $('.searchButton').css("color", 'white')
+  }
+}
+magicColor()
+// <div class="logo">${node.logo}</div>
 const render = () => {
   $siteList.find('li:not(.last)').remove()
   hashMap.forEach((node, index) =>{
+    node.logo = logoList(simplifyUrl(node.url))
     const $li = $(`<li>
       <div class="site">
-        <div class="logo">${node.logo}</div>
+         <div class="logo">
+            <img class="fav" src="${node.logo}" alt="" width="50%" height="50%">
+          </div> 
         <div class="link">${simplifyUrl(node.url)}</div>
         <div class="close">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-close"></use>
           </svg>
-          <div class="editDialog" title="Edit-Form"></div>
          </div>
       </div>
      </li>`).insertBefore($lastLi)
@@ -48,7 +90,7 @@ const render = () => {
       hashMap.splice(index, 1)
       render()
     })
-    magicColor()
+
   })
 }
 
@@ -60,6 +102,7 @@ $('.magicButton')
     render()
   })
 
+
 $('.addButton')
   .on(`click`, () => {
     let url = window.prompt('Which website would you like to add?')
@@ -69,6 +112,7 @@ $('.addButton')
     console.log(url)
     hashMap.push({
       logo: simplifyUrl(url)[0],
+      //simplifyUrl(url)[0]
       logoType: 'text',
       url: url
     })
