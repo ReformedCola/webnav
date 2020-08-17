@@ -85,7 +85,7 @@ body{background: #ffffff;}
   padding: 0 10px;
   border: 1px solid #dddddd;
   border-radius: 22px; /* 4px */
-  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28)
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
   cursor: text;
   max-width: 584px;
   font-size: 16px;
@@ -233,4 +233,22 @@ body{background: #ffffff;}
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#snowflakeContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.snowflake {
+  position: fixed;
+  background-color: white;
+  user-select: none;
+  z-index: 1000;
+  pointer-events: none;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
 }

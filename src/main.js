@@ -3,8 +3,14 @@ const $lastLi = $siteList.find('li.last')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap = xObject || [
-  { logo: 'A', url: 'https://www.acfun.cn'},
-  { logo: 'B', url: 'https://www.bilibili.com'},
+  { logo: 'A', url: 'https://www.github.com'},
+  { logo: 'B', url: 'https://www.leetcode.com'},
+  { logo: 'C', url: 'https://www.reactjs.org'},
+  { logo: 'D', url: 'https://www.facebook.com'},
+  { logo: 'E', url: 'https://www.apple.com'},
+  { logo: 'F', url: 'https://www.amazon.com'},
+  { logo: 'G', url: 'https://www.linkedin.com'},
+  { logo: 'H', url: 'https://www.google.com'},
 ]
 const colors = [
   'rgb(61, 192, 176)',
@@ -37,7 +43,7 @@ const logoList = (e) => {
 
 
 const magicColor = () => {
-  color = colors[Math.floor(Math.random() * colors.length)]
+  let color = colors[Math.floor(Math.random() * colors.length)]
   if(color === 'rgb(72, 85, 100)'
     || color === 'rgb(78, 169, 219)'
     || color === 'rgb(137, 48, 61)'
@@ -86,7 +92,6 @@ const render = () => {
     })
     $li.on('click', '.close', (e) => {
       e.stopPropagation() // to stop opening the website while clicking on the 'x'
-      console.log(hashMap)
       hashMap.splice(index, 1)
       render()
     })
@@ -123,6 +128,7 @@ window.onbeforeunload = ()=> {
   const string = JSON.stringify(hashMap)
   localStorage.setItem('x', string)
 }
+
 
 $(document).on('keypress', (e) => {
   const {key} = e // const key = e.key
